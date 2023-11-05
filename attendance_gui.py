@@ -162,4 +162,29 @@ update_schedule_button = tk.Button(tab2, text="Update Class Schedule", command=u
 class_name_label = tk.Label(tab2, text="Class Name:")
 start_time_label = tk.Label(tab2, text="Start Time:")
 end_time_label = tk.Label(tab2, text="End Time:")
-days_label =
+days_label = tk.Label(tab2, text="Days:")
+
+# Create and configure widgets for showing class schedule
+show_schedule_button = tk.Button(tab2, text="Show Class Schedule", command=show_class_schedule)
+
+# Pack widgets for the second tab
+open_schedule_button.pack()
+class_schedule_text.pack()
+update_class_name_label.pack()
+update_class_name_entry.pack()
+update_start_time_label.pack()
+update_start_time_entry.pack()
+update_end_time_label.pack()
+update_end_time_entry.pack()
+update_days_label.pack()
+update_days_entry.pack()
+update_schedule_button.pack()
+class_name_label.pack()
+start_time_label.pack()
+end_time_label.pack()
+days_label.pack()
+show_schedule_button.pack()
+
+# Start the main loop
+notebook.pack(expand=1, fill="both")
+root.mainloop()
