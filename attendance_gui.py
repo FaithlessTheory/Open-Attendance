@@ -13,7 +13,7 @@ def load_class_schedule():
             lines = file.readlines()
             for line in lines:
                 parts = line.strip().split(": ")
-                if len parts == 2:
+                if len(parts) == 2:
                     class_name, class_details = parts
                     class_details = class_details.split(", ")
                     if len(class_details) >= 3:
@@ -70,7 +70,7 @@ def update_class_schedule():
         class_schedule[class_name] = (start_time, end_time, days)
         save_class_schedule()
     update_class_name_entry.delete(0, tk.END)
-    update_start_time_entry.delete(0, tk.END)
+    update_start_time_entry.delete0, tk.END)
     update_end_time_entry.delete(0, tk.END)
     update_days_entry.delete(0, tk.END)
 
@@ -94,7 +94,7 @@ def update_dropdown():
     class_var.set(list(class_schedule.keys())[0])  # Update the dropdown with the latest class names
 
 def check_missing_classes():
-    present classes = set()
+    present_classes = set()
     if os.path.exists(attendance_file):
         with open(attendance_file, "r") as file:
             attendance_list = file.readlines()
