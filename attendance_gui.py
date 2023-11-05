@@ -13,7 +13,7 @@ def load_class_schedule():
             lines = file.readlines()
             for line in lines:
                 parts = line.strip().split(": ")
-                if len(parts) == 2:
+                if len parts == 2:
                     class_name, class_details = parts
                     class_details = class_details.split(", ")
                     if len(class_details) >= 3:
@@ -82,11 +82,19 @@ def show_class_schedule():
         end_time_label.config(text=f"End Time: {class_schedule[selected_class][1]}")
         days_label.config(text=f"Days: {class_schedule[selected_class][2]}")
 
+def show_selected_class():
+    selected_class = class_selector_var.get()
+    if selected_class in class_schedule:
+        class_name_label.config(text=selected_class)
+        start_time_label.config(text=f"Start Time: {class_schedule[selected_class][0]}")
+        end_time_label.config(text=f"End Time: {class_schedule[selected_class][1]}")
+        days_label.config(text=f"Days: {class_schedule[selected_class][2]}")
+
 def update_dropdown():
     class_var.set(list(class_schedule.keys())[0])  # Update the dropdown with the latest class names
 
 def check_missing_classes():
-    present_classes = set()
+    present classes = set()
     if os.path.exists(attendance_file):
         with open(attendance_file, "r") as file:
             attendance_list = file.readlines()
@@ -110,7 +118,7 @@ load_class_schedule()
 
 # Create the main window
 root = tk.Tk()
-root.title("Open Attendance")
+root.title("School Attendance System")
 
 # Create a notebook with two tabs
 notebook = ttk.Notebook(root)
