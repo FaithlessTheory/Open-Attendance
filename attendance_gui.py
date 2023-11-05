@@ -70,7 +70,7 @@ def update_class_schedule():
         class_schedule[class_name] = (start_time, end_time, days)
         save_class_schedule()
     update_class_name_entry.delete(0, tk.END)
-    update_start_time_entry.delete0, tk.END)
+    update_start_time_entry.delete(0, tk.END)
     update_end_time_entry.delete(0, tk.END)
     update_days_entry.delete(0, tk.END)
 
