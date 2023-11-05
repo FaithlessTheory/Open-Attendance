@@ -65,7 +65,7 @@ def update_class_schedule():
     start_time = update_start_time_var.get()
     end_time = update_end_time_var.get()
     days = update_days_var.get()
-    
+
     if class_name:
         class_schedule[class_name] = (start_time, end_time, days)
         save_class_schedule()
@@ -73,6 +73,14 @@ def update_class_schedule():
     update_start_time_entry.delete(0, tk.END)
     update_end_time_entry.delete(0, tk.END)
     update_days_entry.delete(0, tk.END)
+
+def show_class_schedule():
+    selected_class = class_var.get()
+    if selected_class in class_schedule:
+        class_name_label.config(text=selected_class)
+        start_time_label.config(text=f"Start Time: {class_schedule[selected_class][0]}")
+        end_time_label.config(text=f"End Time: {class_schedule[selected_class][1]}")
+        days_label.config(text=f"Days: {class_schedule[selected_class][2]}")
 
 def check_missing_classes():
     present_classes = set()
@@ -150,19 +158,8 @@ update_days_var = tk.StringVar()
 update_days_entry = tk.Entry(tab2, textvariable=update_days_var)
 update_schedule_button = tk.Button(tab2, text="Update Class Schedule", command=update_class_schedule)
 
-# Pack widgets for the second tab
-open_schedule_button.pack()
-class_schedule_text.pack()
-update_class_name_label.pack()
-update_class_name_entry.pack()
-update_start_time_label.pack()
-update_start_time_entry.pack()
-update_end_time_label.pack()
-update_end_time_entry.pack()
-update_days_label.pack()
-update_days_entry.pack()
-update_schedule_button.pack()
-
-# Start the main loop
-notebook.pack(expand=1, fill="both")
-root.mainloop()
+# Create and configure widgets for displaying class schedule
+class_name_label = tk.Label(tab2, text="Class Name:")
+start_time_label = tk.Label(tab2, text="Start Time:")
+end_time_label = tk.Label(tab2, text="End Time:")
+days_label =
