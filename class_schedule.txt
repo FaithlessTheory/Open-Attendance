@@ -1,0 +1,4 @@
+Class 1: 09:00, 10:30, Monday, Wednesday
+Class 2: 11:00, 12:30, Tuesday, Thursday
+Class 3: 13:00, 14:30, Friday
+Class 4: 15:00, 16:30, Monday, Wednesday, Friday
