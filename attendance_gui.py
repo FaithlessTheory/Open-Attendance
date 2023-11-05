@@ -82,6 +82,9 @@ def show_class_schedule():
         end_time_label.config(text=f"End Time: {class_schedule[selected_class][1]}")
         days_label.config(text=f"Days: {class_schedule[selected_class][2]}")
 
+def update_dropdown():
+    class_var.set(list(class_schedule.keys())[0])  # Update the dropdown with the latest class names
+
 def check_missing_classes():
     present_classes = set()
     if os.path.exists(attendance_file):
@@ -107,7 +110,7 @@ load_class_schedule()
 
 # Create the main window
 root = tk.Tk()
-root.title("School Attendance System")
+root.title("Open Attendance")
 
 # Create a notebook with two tabs
 notebook = ttk.Notebook(root)
@@ -162,4 +165,38 @@ update_schedule_button = tk.Button(tab2, text="Update Class Schedule", command=u
 class_name_label = tk.Label(tab2, text="Class Name:")
 start_time_label = tk.Label(tab2, text="Start Time:")
 end_time_label = tk.Label(tab2, text="End Time:")
-days_label =
+days_label = tk.Label(tab2, text="Days:")
+
+# Create and configure widgets for showing class schedule
+show_schedule_button = tk.Button(tab2, text="Show Class Schedule", command=show_class_schedule)
+
+# Create a class selector dropdown
+class_selector_label = tk.Label(tab2, text="Select Class:")
+class_selector_var = tk.StringVar(value=list(class_schedule.keys())[0])
+class_selector_dropdown = tk.OptionMenu(tab2, class_selector_var, *class_schedule.keys())
+class_selector_button = tk.Button(tab2, text="Show Selected Class", command=show_selected_class)
+
+# Pack widgets for the second tab
+open_schedule_button.pack()
+class_schedule_text.pack()
+update_class_name_label.pack()
+update_class_name_entry.pack()
+update_start_time_label.pack()
+update_start_time_entry.pack()
+update_end_time_label.pack()
+update_end_time_entry.pack()
+update_days_label.pack()
+update_days_entry.pack()
+update_schedule_button.pack()
+class_name_label.pack()
+start_time_label.pack()
+end_time_label.pack()
+days_label.pack()
+show_schedule_button.pack()
+class_selector_label.pack()
+class_selector_dropdown.pack()
+class_selector_button.pack()
+
+# Start the main loop
+notebook.pack(expand=1, fill="both")
+root.mainloop()
